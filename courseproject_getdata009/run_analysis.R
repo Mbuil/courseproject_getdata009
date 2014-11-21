@@ -92,6 +92,8 @@ for (i in 1:30){
   for (j in 1:6){
     tempset <- extractdata[extractdata$label==activity_labels$V1[j]&extractdata$subject==i,]
     tempmean <- sapply(tempset,mean)
+ # notice: sapply() is better than lapply as the latter creates
+    # lists that will make write.table() difficult to execute
     dataset2 <- rbind(dataset2,tempmean)
   }
 }
